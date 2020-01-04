@@ -5,19 +5,15 @@ Created on Mon Dec 16 12:58:15 2019
 @author: c.camilli
 """
 
-import os
 from copy import deepcopy
-os.chdir("..\\inputs")
 
 def parse_input(filename):
     with open(filename) as file:
         l = [int(el) for line in file.readlines() for el in line.rstrip('\n')]
     return l
 
-seq = parse_input('16.in')
+seq = parse_input('..\\inputs\\16.in')
 
-#%%
-#PART 1
 def apply_fft(seq, niters):
     n = len(seq)
     base_pattern = [0, 1, 0, -1]
@@ -43,8 +39,7 @@ for el in ans[:8]:
     ans1 += str(el)
     
 print("Answer for part 1 is", ans1)
-#%%
-#PART 2
+
 def apply_fft_with_offset(seq, niters):
     seq = seq * 10000
     offset = ''
@@ -71,7 +66,6 @@ ans2 = ""
 for el in ans[:8]:
     ans2 += str(el)
 print("Answer for part 2 is", ans2)
-#%%
         
     
             

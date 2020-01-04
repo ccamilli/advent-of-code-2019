@@ -4,10 +4,9 @@ Created on Wed Dec 18 15:54:29 2019
 
 @author: c.camilli
 """
-import os
+
 import string
 import numpy as np
-os.chdir('..\\inputs')
 
 lower = string.ascii_lowercase
 upper = string.ascii_uppercase
@@ -68,7 +67,7 @@ def shortest_path_to_collect(start, to_collect):
     checked[key] = dist       
     return dist
 
-grid = parse_input('18.in')            
+grid = parse_input('..\\inputs\\18.in')            
 keys = find_keys(grid)
 
 all_info = {}

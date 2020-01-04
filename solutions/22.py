@@ -12,8 +12,7 @@ def parse_file(filename):
         f = [el.rstrip('\n') for el in file.readlines()]
     return f
 
-class Shuffler():
-    
+class Shuffler():    
     def __init__(self, instructions, deck_size):
         self.deck = np.arange(deck_size)
         self.instructions = instructions
@@ -48,9 +47,8 @@ s = Shuffler(f, 10007)
 s.shuffle()
 ans1 = s.get_index_of(2019)
 print("Answer for part 1 is", ans1)
-#%%
-class SmarterShuffler(Shuffler):
-    
+
+class SmarterShuffler(Shuffler):   
     def __init__(self, instructions, deck_size):
         self.instructions = instructions
         #one round of shuffling maps index ix to (offset + ix*spaces)%deck_size

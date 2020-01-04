@@ -5,8 +5,6 @@ Created on Sat Dec 14 08:30:06 2019
 @author: c.camilli
 """
 
-import os
-os.chdir("..\\inputs")
 import math
 import numpy as np
 
@@ -14,11 +12,9 @@ def parse_input(filename):
     with open(filename) as file:
         l = [el.rstrip('\n') for el in file.readlines()]
         
-    pairs = [el.split('=>') for el in l]  
-    
-    adj_list = {}
-    kv = {}
-    
+    pairs = [el.split('=>') for el in l]     
+    adj_list, kv = {}, {}
+
     for k, v in pairs:
         k = [el.strip(' ') for el in k.strip(' ').split(',')]
         v = v.strip(' ')
@@ -85,7 +81,7 @@ def binary_search(adj_list, kv, level_list, goal):
 
 
 #PART 1
-adj_list, kv = parse_input("14.in")
+adj_list, kv = parse_input("..\\inputs\\14.in")
 level_list = get_levels(adj_list, kv)
 a = get_requirements(adj_list, kv, level_list, 1)
 ans1 = a['ORE']

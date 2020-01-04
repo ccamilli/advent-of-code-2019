@@ -5,11 +5,7 @@ Created on Fri Dec 20 14:44:46 2019
 @author: c.camilli
 """
 
-import os
-import string
-os.chdir('../inputs')
-
-upper = string.ascii_uppercase
+from string import ascii_uppercase as upper
 
 def parse_input(filename):
     with open(filename) as file:
@@ -98,7 +94,7 @@ def adapted_bfs_search(from_point, to_point, maze, portals):
         length += 1
         
             
-maze = parse_input('20.in')
+maze = parse_input('..\\inputs\\20.in')
 letters = find_letters(maze)
 portals = find_portals(letters, maze)
 entrance, exit_maze = find_entrance_and_exit(portals)

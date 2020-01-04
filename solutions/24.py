@@ -4,6 +4,7 @@ Created on Tue Dec 24 12:56:29 2019
 
 @author: c.camilli
 """
+
 import numpy as np
 
 def parse_file(filename):
@@ -37,8 +38,7 @@ def simul(l):
                     cp[(iline, icol)] = 0
                 elif element == 0 and nbugs in [1, 2]:
                     cp[(iline, icol)] = 1
-                #else:
-                #    cp[(iline, icol)] = l[(iline, icol)]
+
         hsh = hash_l(cp)
         if hsh in seen_states:
             print("Answer for part 1 is", hsh)
@@ -49,7 +49,7 @@ def simul(l):
     return
 
 simul(l)
-#%%
+
 class RecursiveGridSystem():
     
     def __init__(self, initial_grid, nlevels):
@@ -63,37 +63,26 @@ class RecursiveGridSystem():
         natural_neighbors = [(iz, iy-1, ix), (iz, iy+1, ix),
                              (iz, iy, ix-1), (iz, iy, ix+1)]
         for el in natural_neighbors:
-            try:
-                z, y, x = el
-                if y == -1:
-                    total_bugs += self.state[iz-1, 1, 2]
-                elif x == -1:
-                    total_bugs += self.state[iz-1, 2, 1]
-                elif y == 5:
-                    total_bugs += self.state[iz-1, 3, 2]
-                elif x == 5:
-                    total_bugs += self.state[iz-1, 2, 3]
-                elif (y, x) != (2, 2):
-                    total_bugs += self.state[el]
-                elif (iy, ix) == (1, 2):
-                    total_bugs += self.state[iz+1, 0, :].sum()
-                elif (iy, ix) == (3, 2):
-                    total_bugs += self.state[iz+1, 4, :].sum()
-                elif (iy, ix) == (2, 1):
-                    total_bugs += self.state[iz+1, :, 0].sum()
-                elif (iy, ix) == (2, 3):
-                    total_bugs += self.state[iz+1, :, 4].sum()
+            z, y, x = el
+            if y == -1:
+                total_bugs += self.state[iz-1, 1, 2]
+            elif x == -1:
+                total_bugs += self.state[iz-1, 2, 1]
+            elif y == 5:
+                total_bugs += self.state[iz-1, 3, 2]
+            elif x == 5:
+                total_bugs += self.state[iz-1, 2, 3]
+            elif (y, x) != (2, 2):
+                total_bugs += self.state[el]
+            elif (iy, ix) == (1, 2):
+                total_bugs += self.state[iz+1, 0, :].sum()
+            elif (iy, ix) == (3, 2):
+                total_bugs += self.state[iz+1, 4, :].sum()
+            elif (iy, ix) == (2, 1):
+                total_bugs += self.state[iz+1, :, 0].sum()
+            elif (iy, ix) == (2, 3):
+                total_bugs += self.state[iz+1, :, 4].sum()
 
-            except IndexError:
-                print(el)
-                if y == -1:
-                    total_bugs += self.state[iz-1, 1, 2]
-                elif y == 5:
-                    total_bugs += self.state[iz-1, 3, 2]
-                elif x == -1:
-                    total_bugs += self.state[iz-1, 2, 1]
-                elif x == 5:
-                    total_bugs += self.state[iz-1, 2, 3]
         return int(total_bugs)
         
         

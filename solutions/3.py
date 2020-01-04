@@ -1,12 +1,14 @@
-import os
-os.chdir("..\\inputs")
+# -*- coding: utf-8 -*-
+"""
+@author: Caio Camilli
+"""
 
 def parse_input(filename):
     with open(filename) as file:
         ls = [line.strip('\n').split(',') for line in file.readlines()]
     return ls
 
-wires = parse_input('3.in')
+wires = parse_input('..\\inputs\\3.in')
 
 class Vertice:
     def __init__(self, x, y):
@@ -140,7 +142,7 @@ crossings = ws[0].get_crossings(ws[1])
 ds = {a:Vertice.manhattan_distance(a, Vertice(0, 0)) for a in crossings}
 ans1 = min(ds.values())
 print("Answer for part 1 is", ans1)
-#%%
+
 ds2 = {a:(ws[0].get_length_until(a) + ws[1].get_length_until(a)) for a in crossings}
 ans2 = min(ds2.values())
 print("Answer for part 2 is", ans2)

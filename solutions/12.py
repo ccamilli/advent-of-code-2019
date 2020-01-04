@@ -5,11 +5,8 @@ Created on Thu Dec 12 14:02:36 2019
 @author: c.camilli
 """
 
-import os
 import numpy as np
 import math
-
-os.chdir("..\\inputs")
 
 def parse_line(l):
     return tuple([int(el.split('=')[1]) for el in l[1:-1].split(',')])
@@ -93,8 +90,10 @@ class Simulation():
         
 def gcd(a, b):
     return abs(a*b) // math.gcd(a, b)
+
+asteroids = [Asteroid(el) for el in parse_file('..\\inputs\\12.in')]
         
-s = Simulation([Asteroid(el) for el in parse_file('12.in')])
+s = Simulation(asteroids)
 #%%       
 
 #PART 1
@@ -105,7 +104,7 @@ print("Answer for part 1 is", ans1)
 #%%
 
 #PART 2
-s = Simulation([Asteroid(el) for el in parse_file('12.in')])
+s = Simulation(asteroids)
 ans2 = gcd(gcd(s.simulate(0), s.simulate(1)), s.simulate(2))
 print("Answer for part 2 is", ans2)
     

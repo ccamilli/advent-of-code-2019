@@ -5,21 +5,18 @@ Created on Sat Dec  7 11:22:21 2019
 @author: Caio Camilli
 """
 
-import os
-from copy import deepcopy
 from itertools import permutations
-os.chdir("..//inputs")
 
 def parse_input(path):
     with open(path) as file:
         l = [int(v.rstrip('\n')) for v in file.read().split(',')]
     return l
 
-code = parse_input('7.in')
-#%%
+code = parse_input('..\\inputs\\7.in')
+
 class IntCode():
     def __init__(self, inp, input_instructions, verbose=False):
-        self._state = deepcopy(inp)
+        self._state = inp.copy()
         self._header = 0
         self._hOps = {1:lambda x, y: x+y, 2:lambda x, y: x*y, 99:'halt'}        
         self._verbose = verbose
@@ -117,19 +114,17 @@ class IntCode():
         if op == 4:
             op, modes = self._run_instructions_and_update(op, modes)
         return (op == 99), self._output
-
         
 
 def gen_phase_settings(values):
     return [list(s) for s in list(permutations(values))]
-#%%
     
 def amplifier_simul(phases, instr):
     inp = 0
     out = 0
     for phase in phases:
         inp = out
-        instructions = deepcopy(instr)
+        instructions = instr.copy()
         input_instructions = [phase, inp]
         out = IntCode(instructions, input_instructions).run()
     return out
@@ -143,7 +138,7 @@ def feedback_loop_mode(phases, instr):
     while not halt:
         for j, phase in enumerate(phases):
             if i==0:
-                amp = IntCode(deepcopy(instr), [phases[j], inp])
+                amp = IntCode(instr.copy(), [phases[j], inp])
                 computers.append(amp)                
             else:
                 computers[j]._input.append(out)
@@ -161,7 +156,7 @@ for phases in phase_settings:
 
 ans1 = max(results)
 print("Answer for part 1 is", ans1)
-#%%
+
 results = []
 phase_settings = gen_phase_settings([5, 6, 7, 8, 9])
 for phase in phase_settings:

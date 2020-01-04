@@ -5,20 +5,16 @@ Created on Mon Dec  9 10:17:56 2019
 @author: c.camilli
 """
 
-import os
-from copy import deepcopy
-os.chdir("..\\inputs")
-
 def parse_input(path):
     with open(path) as file:
         l = [int(v.rstrip('\n')) for v in file.read().split(',')]
     return l
 
-code = parse_input('9.in')
-#%%
+code = parse_input('..\\inputs\\9.in')
+
 class IntCode():
     def __init__(self, code, inputs):
-        self._state = deepcopy(code)
+        self._state = code.copy()
         self._header, self.ninputs, self._relative_base = 0, 0, 0
         self._hOps = {1:lambda x, y: x+y, 2:lambda x, y: x*y}        
         self._verbose = False
@@ -133,12 +129,12 @@ class IntCode():
         if op == 4:
             op, modes = self._run_instructions_and_update(op, modes)
         return (op == 99), self._output
-#%%
+
 extend = [0]*100000
 s = IntCode(code + extend, [1])
 ans1 = s.run()
 print("Answer for part 1 is", ans1)
-#%%
+
 s = IntCode(code + extend, [2])
 ans2 = s.run()
 print("Answer for part 2 is", ans2)

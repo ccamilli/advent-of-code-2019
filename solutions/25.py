@@ -5,21 +5,17 @@ Created on Wed Dec 25 12:52:13 2019
 @author: c.camilli
 """
 
-import os
-from copy import deepcopy
-os.chdir("..\\inputs")
-
 def parse_input(path):
     with open(path) as file:
         l = [int(v.rstrip('\n')) for v in file.read().split(',')]
     return l
 
-code = parse_input('25.in')
+code = parse_input('..\\inputs\\25.in')
 #%%
 
 class IntCode():
     def __init__(self, code, inputs):
-        self._state = deepcopy(code)
+        self._state = code.copy()
         self._header, self.ninputs, self._relative_base = 0, 0, 0
         self._hOps = {1:lambda x, y: x+y, 2:lambda x, y: x*y}        
         self._verbose = False
@@ -147,7 +143,6 @@ def convert_to_ascii(seq):
     l.extend([10])
     return l
 
-#%%
 class Robot():
     def __init__(self, brain):
         self.brain = brain
@@ -174,7 +169,7 @@ class Robot():
         
 r = Robot(IntCode(code + [0]*10000, []))
 r.kickstart()
-#%%
+
 try:
     while True:
         answer = r.parse_output()

@@ -5,18 +5,15 @@ Created on Tue Dec 10 10:45:41 2019
 @author: c.camilli
 """
 
-import os
 import operator
 from numpy import arctan, degrees
-
-os.chdir("..\\inputs")
 
 def parse_input(filename):
     with open(filename) as file:
         data = [v.rstrip('\n') for v in file.readlines()]
         return data
     
-f = parse_input("10.in")
+f = parse_input("..\\inputs\\10.in")
 #%%
 def gcd(a, b):
     while b!=0:

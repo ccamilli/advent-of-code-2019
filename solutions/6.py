@@ -5,29 +5,23 @@ Created on Fri Dec  6 06:24:45 2019
 @author: Caio Camilli
 """
 
-import os
-os.chdir("..\\inputs")
-#%%
 def parse_input(filename):
     with open(filename) as file:
         ls = [el.rstrip('\n') for el in file.readlines()]
     return ls
 
-ls = parse_input('6.in')
-#%%
-#PART 1
+ls = parse_input('..\\inputs\\6.in')
+
 orbits = {el.split(')')[1]:el.split(')')[0] for el in ls}
 bodies = orbits.keys()
-count = 0
+ans1 = 0
 for b in bodies:
     while b in orbits:
-        count += 1
+        ans1 += 1
         b = orbits[b]
 
-ans1 = count
 print("Answer for part 1 is", ans1)
-#%%
-#PART 2
+
 you_chain = []
 santa_chain = []
 

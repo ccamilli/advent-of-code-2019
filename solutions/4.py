@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+@author: Caio Camilli
+"""
+
 min_inp = 109165
 max_inp = 576723
 

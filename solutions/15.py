@@ -5,23 +5,19 @@ Created on Sun Dec 15 11:39:29 2019
 @author: c.camilli
 """
 
-import os
-from copy import deepcopy
 import numpy as np
 import random
-os.chdir("..\\inputs")
 
 def parse_input(path):
     with open(path) as file:
         l = [int(v.rstrip('\n')) for v in file.read().split(',')]
     return l
 
-code = parse_input('15.in')
-#%%
+code = parse_input('..\\inputs\\15.in')
 
 class IntCode():
     def __init__(self, code, inputs):
-        self._state = deepcopy(code)
+        self._state = code.copy()
         self._header, self.ninputs, self._relative_base = 0, 0, 0
         self._hOps = {1:lambda x, y: x+y, 2:lambda x, y: x*y}        
         self._verbose = False
@@ -219,8 +215,7 @@ class Robot():
             self.computer._input.append(move)
             output = next(gen)
             self.execute_move(move, output)
-            
-#%%   
+             
 def recursive_maze_solver(maze, origin, dest, tested):
     if origin == dest:
         return 0
@@ -238,8 +233,7 @@ def recursive_maze_solver(maze, origin, dest, tested):
                 recursive_maze_solver(maze, el, dest, tested) 
                 for el in valid_possibilities])
                 
-#%%
-#PART 1
+
 computer = IntCode(code, [])
 r = Robot(computer)
 r.explore()   
@@ -247,8 +241,7 @@ maze = r.get_grid()
 origin = tuple(np.argwhere(maze==5)[0])
 destination = tuple(np.argwhere(maze==2)[0])
 print("Answer for part 1 is", recursive_maze_solver(maze, origin, destination, set())) 
-#%%
-#PART 2
+
 def spread_oxygen(maze):
     maze_copy = np.array(maze, dtype=np.int16)
     minutes = 0
@@ -269,6 +262,7 @@ def spread_oxygen(maze):
         else:
             minutes += 1
     return minutes
+    
 print("Answer for part 2 is", spread_oxygen(maze))
             
             

@@ -1,17 +1,18 @@
-import os
-from copy import deepcopy
-os.chdir('..//inputs')
+# -*- coding: utf-8 -*-
+"""
+@author: Caio Camilli
+"""
 
 def parse_input(path):
     with open(path) as file:
         l = [int(v.rstrip('\n')) for v in file.read().split(',')]
     return l
 
-v = parse_input('5.in')
-#%%
+v = parse_input("..//inputs//5.in")
+
 class Simulation():
     def __init__(self, inp, inp_code, verbose=False):
-        self._state = deepcopy(inp)
+        self._state = inp.copy()
         self._header = 0
         self._hOps = {1:lambda x, y: x+y, 2:lambda x, y: x*y, 99:'halt'}        
         self._verbose = verbose

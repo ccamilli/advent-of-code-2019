@@ -5,17 +5,15 @@ Created on Sun Dec  8 14:15:55 2019
 @author: Caio Camilli
 """
 
-import os
 import numpy as np
 from PIL import Image
-os.chdir("..\\inputs")
 
 def parse_input(path):
     with open(path) as file:
         l = [int(d) for v in file.readlines() for d in v.strip('\n')]
     return l
 
-inp = parse_input("8.in")
+inp = parse_input("..\\inputs\\8.in")
 #%%
 ##PART 1
 arr = np.array(inp).reshape(100, -1)
