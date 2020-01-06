@@ -11,7 +11,6 @@ def parse_input(path):
     return l
 
 code = parse_input('..\\inputs\\25.in')
-#%%
 
 class IntCode():
     def __init__(self, code, inputs):
