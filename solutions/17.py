@@ -129,17 +129,8 @@ class IntCode():
                 op, modes = self._run_instructions_and_update(op, modes)
             else:
                 op, modes = self._run_instructions_and_update(op, modes)
-        
-    
-    def run_fbl(self, verbose=False):
-        self._verbose = verbose
-        op, modes = self._solve_op_and_modes()
-        while op not in [99, 4]:
-            op, modes = self._run_instructions_and_update(op, modes)
-        if op == 4:
-            op, modes = self._run_instructions_and_update(op, modes)
-        return (op == 99), self._output
-#%%
+
+
 def get_grid(code):
     robot = IntCode(code + [0]*100000, [])
     grid, line = [], []
@@ -184,7 +175,7 @@ def get_alignment_params(inters):
 ans1 = get_alignment_params(get_intersections(grid))
 
 print("Answer for part 1 is", ans1)
-#%%
+
 def convert_grid(grid):
     a = np.zeros(shape=(len(grid), len(grid[0])))
     for i, line in enumerate(grid):
@@ -193,7 +184,7 @@ def convert_grid(grid):
     return a
 
 num_grid = convert_grid(grid)
-#%%
+
 class Robot():
     def __init__(self, grid):
         self.grid = grid

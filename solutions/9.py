@@ -120,15 +120,6 @@ class IntCode():
         while op != 99:
             op, modes = self._run_instructions_and_update(op, modes)
         return self._output
-    
-    def run_fbl(self, verbose=False):
-        self._verbose = verbose
-        op, modes = self._solve_op_and_modes()
-        while op not in [99, 4]:
-            op, modes = self._run_instructions_and_update(op, modes)
-        if op == 4:
-            op, modes = self._run_instructions_and_update(op, modes)
-        return (op == 99), self._output
 
 extend = [0]*100000
 s = IntCode(code + extend, [1])

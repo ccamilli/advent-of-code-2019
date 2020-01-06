@@ -131,17 +131,7 @@ class IntCode():
             else:
                 op, modes = self._run_instructions_and_update(op, modes)
         
-    
-    def run_fbl(self, verbose=False):
-        self._verbose = verbose
-        op, modes = self._solve_op_and_modes()
-        while op not in [99, 4]:
-            op, modes = self._run_instructions_and_update(op, modes)
-        if op == 4:
-            op, modes = self._run_instructions_and_update(op, modes)
-        return (op == 99), self._output
-    
-#%%
+
 grid = {}
 extended_code = code + [0]*1000
 affected = 0

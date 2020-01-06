@@ -126,16 +126,6 @@ class IntCode():
                 op, modes = self._run_instructions_and_update(op, modes)
             else:
                 op, modes = self._run_instructions_and_update(op, modes)
-        
-    
-    def run_fbl(self, verbose=False):
-        self._verbose = verbose
-        op, modes = self._solve_op_and_modes()
-        while op not in [99, 4]:
-            op, modes = self._run_instructions_and_update(op, modes)
-        if op == 4:
-            op, modes = self._run_instructions_and_update(op, modes)
-        return (op == 99), self._output
     
 def convert_to_ascii(seq):
     l = [(ord(el)) for el in seq]

@@ -14,7 +14,7 @@ def parse_input(path):
     return l
 
 code = parse_input('..\\inputs\\23.in')
-#%%
+
 
 class IntCode():
     def __init__(self, code, inputs):
@@ -131,16 +131,6 @@ class IntCode():
             else:
                 op, modes = self._run_instructions_and_update(op, modes)
         
-    
-    def run_fbl(self, verbose=False):
-        self._verbose = verbose
-        op, modes = self._solve_op_and_modes()
-        while op not in [99, 4]:
-            op, modes = self._run_instructions_and_update(op, modes)
-        if op == 4:
-            op, modes = self._run_instructions_and_update(op, modes)
-        return (op == 99), self._output
-    
 
 class Packet():
     
