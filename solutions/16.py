@@ -40,8 +40,8 @@ for el in ans[:8]:
     
 print("Answer for part 1 is", ans1)
 
-def apply_fft_with_offset(seq, niters):
-    seq = seq * 10000
+def apply_fft_with_offset(seq, niters, repeat_n_times):
+    seq = seq * repeat_n_times
     offset = ''
     for i in seq[:7]:
         offset += str(i)

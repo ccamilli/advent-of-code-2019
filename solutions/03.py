@@ -3,6 +3,9 @@
 @author: Caio Camilli
 """
 
+#No manual inputs required
+
+
 def parse_input(filename):
     with open(filename) as file:
         ls = [line.strip('\n').split(',') for line in file.readlines()]

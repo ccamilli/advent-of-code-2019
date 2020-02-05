@@ -5,6 +5,9 @@ Created on Tue Dec 24 12:56:29 2019
 @author: c.camilli
 """
 
+#Manual inputs
+PART_2_MINUTES_PASSED = 200
+
 import numpy as np
 
 def parse_file(filename):
@@ -108,10 +111,10 @@ class RecursiveGridSystem():
     def count_bugs(self):
         return np.sum(self.state)
             
-nlevels = 400
+nlevels = PART_2_MINUTES_PASSED * 2
 system = RecursiveGridSystem(l, nlevels)
 
-system.simulate_n_steps(200)
+system.simulate_n_steps(PART_2_MINUTES_PASSED)
 print("Answer for part 2 is", int(system.count_bugs()))
 
         

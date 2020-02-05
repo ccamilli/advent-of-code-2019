@@ -5,6 +5,9 @@ Created on Tue Dec 10 10:45:41 2019
 @author: c.camilli
 """
 
+#Manual inputs:
+NTH_ASTERIOD_TO_BE_VAPORIZED = 200
+
 import operator
 from numpy import arctan, degrees
 
@@ -150,7 +153,7 @@ ans1 = max(p.asteroids.items(), key = operator.itemgetter(1))
 print("Answer for part 1 is", ans1[1])
 #%%
 #PART 2
-ans2 = p.vaporise_everything(ans1[0], 200)
+ans2 = p.vaporise_everything(ans1[0], NTH_ASTERIOD_TO_BE_VAPORIZED)
 ans2 = 100*ans2[0] + ans2[1]
 print("Answer for part 2 is", ans2)
     

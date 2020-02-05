@@ -5,6 +5,10 @@ Created on Mon Dec  9 10:17:56 2019
 @author: c.camilli
 """
 
+#Manual inputs
+PART_1_INPUT = 1
+PART_2_INPUT = 2
+
 def parse_input(path):
     with open(path) as file:
         l = [int(v.rstrip('\n')) for v in file.read().split(',')]
@@ -122,10 +126,10 @@ class IntCode():
         return self._output
 
 extend = [0]*100000
-s = IntCode(code + extend, [1])
+s = IntCode(code + extend, [PART_1_INPUT])
 ans1 = s.run()
 print("Answer for part 1 is", ans1)
 
-s = IntCode(code + extend, [2])
+s = IntCode(code + extend, [PART_2_INPUT])
 ans2 = s.run()
 print("Answer for part 2 is", ans2)

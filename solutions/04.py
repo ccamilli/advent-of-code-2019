@@ -3,8 +3,9 @@
 @author: Caio Camilli
 """
 
-min_inp = 109165
-max_inp = 576723
+#Manual inputs for parts 1 and 2
+MIN_RANGE = 109165
+MAX_RANGE = 576723
 
 counts = 0
 
@@ -15,7 +16,7 @@ for i in range(1, 6):
                 for m in range(10):
                     for n in range(10):
                         c = 100000*i + 10000*j + 1000*k + 100*l + 10*m + n
-                        if (c > min_inp) and (c < max_inp):
+                        if (c > MIN_RANGE) and (c < MAX_RANGE):
                             if (i==j or j==k or k==l or l==m or m==n):
                                 if (i<=j and j<=k and k<=l and l<=m and m<=n):
                                     counts += 1
@@ -31,7 +32,7 @@ for i in range(1, 6):
                 for m in range(10):
                     for n in range(10):
                         c = 100000*i + 10000*j + 1000*k + 100*l + 10*m + n
-                        if (c > min_inp) and (c < max_inp):
+                        if (c > MIN_RANGE) and (c < MAX_RANGE):
                             if ((i==j and j!=k) or (j==k and i!=j and k!=l) or
                                 (k==l and j!=k and l!=m) or (l==m and l!=k and m!=n)
                                 or (m==n and m!=l)):

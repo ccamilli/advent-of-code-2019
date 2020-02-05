@@ -5,6 +5,10 @@ Created on Sat Dec 14 08:30:06 2019
 @author: c.camilli
 """
 
+#Manual inputs
+FUEL_TO_PRODUCE = 1
+ORE_UNITS_AVAILABLE = 1000000000000
+
 import math
 import numpy as np
 
@@ -83,12 +87,13 @@ def binary_search(adj_list, kv, level_list, goal):
 #PART 1
 adj_list, kv = parse_input("..\\inputs\\14.in")
 level_list = get_levels(adj_list, kv)
-a = get_requirements(adj_list, kv, level_list, 1)
+a = get_requirements(adj_list, kv, level_list, FUEL_TO_PRODUCE)
 ans1 = a['ORE']
 print("Answer for part 1 is", ans1)
-#%%
+
+
 #PART 2
-ans2 = binary_search(adj_list, kv, level_list, 1000000000000)
+ans2 = binary_search(adj_list, kv, level_list, ORE_UNITS_AVAILABLE)
 print("Answer for part 2 is", ans2)
 
 

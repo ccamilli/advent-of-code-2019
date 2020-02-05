@@ -3,6 +3,13 @@
 @author: Caio Camilli
 """
 
+#Manual inputs for part 1
+POSITION_1_VALUE = 12
+POSITION_2_VALUE = 2
+
+#Manual inputs for part 2
+TARGET_OUTPUT = 19690720
+
 with open('..\\inputs\\2.in') as file:
     l = [int(el) for lis in [line.rstrip('\n').split(',') for line in file] for el in lis]
 
@@ -48,7 +55,7 @@ class Simulation():
             op = self._run_instructions_and_update(op)
         return self._state
             
-l[1], l[2] = 12, 2
+l[1], l[2] = POSITION_1_VALUE, POSITION_2_VALUE
 
 ans1 = Simulation(l).run()[0]
 
@@ -64,7 +71,7 @@ while (n < 100 and kill is False):
     v = 0
     while (v < 100 and kill is False):
         out = Simulation(update_nouns_verbs(l, n, v)).run()[0]
-        if out == 19690720:
+        if out == TARGET_OUTPUT:
             kill = True
             ans2 = 100*n + v
         v += 1

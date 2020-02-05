@@ -5,6 +5,13 @@ Created on Sun Dec 22 18:14:01 2019
 @author: c.camilli
 """
 
+#Manual inputs
+PART_1_DECK_SIZE = 10007
+PART_1_CARD_TO_TRACK = 2019
+PART_2_DECK_SIZE = 119315717514047
+PART_2_N_SHUFFLES = 101741582076661
+PART_2_POSITION_TO_TRACK = 2020
+
 import numpy as np
 
 def parse_file(filename):
@@ -43,9 +50,9 @@ class Shuffler():
 
 f = parse_file('..//inputs//22.in')
             
-s = Shuffler(f, 10007)
+s = Shuffler(f, PART_1_DECK_SIZE)
 s.shuffle()
-ans1 = s.get_index_of(2019)
+ans1 = s.get_index_of(PART_1_CARD_TO_TRACK)
 print("Answer for part 1 is", ans1)
 
 class SmarterShuffler(Shuffler):   
@@ -105,10 +112,7 @@ class SmarterShuffler(Shuffler):
             t += n
         return t
             
-
-deck_size = 119315717514047
-n_shuffles = 101741582076661
-index_at = 2020        
-s = SmarterShuffler(f, deck_size)
-ans2 = s.find_card_at(index_at, n_shuffles)
+    
+s = SmarterShuffler(f, PART_2_DECK_SIZE)
+ans2 = s.find_card_at(PART_2_POSITION_TO_TRACK, PART_2_N_SHUFFLES)
 print("Answer for part 2 is", ans2)

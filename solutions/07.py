@@ -5,6 +5,8 @@ Created on Sat Dec  7 11:22:21 2019
 @author: Caio Camilli
 """
 
+#No manual input required
+
 from itertools import permutations
 
 def parse_input(path):

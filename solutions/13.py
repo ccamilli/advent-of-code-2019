@@ -5,6 +5,9 @@ Created on Fri Dec 13 08:36:42 2019
 @author: c.camilli
 """
 
+#Manual inputs
+ADDRESS_0_INITIAL_VALUE = 2
+
 import numpy as np
 from PIL import Image
 import sys
@@ -18,7 +21,7 @@ def parse_input(path):
     return l
 
 code = parse_input('..\\inputs\\13.in')
-#%%
+
 class IntCode():
     def __init__(self, code, inputs):
         self._state = code.copy()
@@ -194,7 +197,7 @@ class Game():
             #print(f"Final score is {self.score}")
             
         
-#%%
+
 extend = [0]*100000
 s = IntCode(code + extend, [])
 outs = []
@@ -207,7 +210,7 @@ print("Answer for part 1 is", ans1)
 
 #%%
 extend = [0]*100000
-code[0] = 2
+code[0] = ADDRESS_0_INITIAL_VALUE
 outs = []
 s = IntCode(code + extend, [])
 g = Game(s)

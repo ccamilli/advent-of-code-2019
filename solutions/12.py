@@ -5,6 +5,9 @@ Created on Thu Dec 12 14:02:36 2019
 @author: c.camilli
 """
 
+#Manual inputs
+STEPS_TO_REPEAT_SIMULATION = 1000
+
 import numpy as np
 import math
 
@@ -93,15 +96,13 @@ def gcd(a, b):
 
 asteroids = [Asteroid(el) for el in parse_file('..\\inputs\\12.in')]
         
-s = Simulation(asteroids)
-#%%       
+s = Simulation(asteroids)      
 
 #PART 1
-s.simulate(0, nturns=1000)
+s.simulate(0, nturns=STEPS_TO_REPEAT_SIMULATION)
 ans1 = s.total_kinetic_energy()
 print("Answer for part 1 is", ans1)
 
-#%%
 
 #PART 2
 s = Simulation(asteroids)

@@ -3,6 +3,13 @@
 @author: Caio Camilli
 """
 
+#Manual inputs for part 1
+INPUT_INSTRUCTION_1 = 1
+
+#Manual inputs for part 2
+INPUT_INSTRUCTION_2 = 5
+
+
 def parse_input(path):
     with open(path) as file:
         l = [int(v.rstrip('\n')) for v in file.read().split(',')]
@@ -107,8 +114,8 @@ class Simulation():
             op, modes = self._run_instructions_and_update(op, modes)
         return self._output
 
-ans1 = Simulation(v, 1).run()
+ans1 = Simulation(v, INPUT_INSTRUCTION_1).run()
 print("Answer for part 1 is", ans1)
 
-ans2 = Simulation(v, 5).run()
+ans2 = Simulation(v, INPUT_INSTRUCTION_2).run()
 print("Answer for part 2 is", ans2)
